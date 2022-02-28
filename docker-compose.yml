@@ -1,0 +1,32 @@
+version: '3.9'
+services:
+  postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5434:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nest
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - postgres
+  test-postgres:
+    image: postgres
+    restart: always
+    ports:
+      - 5435:5432
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nest
+    volumes:
+      - postgres:/var/lib/postgresql/data
+    networks:
+      - postgres
+networks:
+  postgres:
+volumes:
+  postgres:
